@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpaceXplorer - Beyond the Galaxy</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+<header class="topbar">
+    <div class="logo">🚀 SpaceXplorer</div>
+    <div class="subtitle">BEYOND THE GALAXY</div>
+</header>
+
+<main class="dashboard">
+
+    <!-- RESOURCE DASHBOARD -->
+    <section class="stats">
+        <div class="stat"><span>⛽ FUEL</span><strong id="fuel">100</strong></div>
+        <div class="stat"><span>⚡ ENERGY</span><strong id="energy">100</strong></div>
+        <div class="stat"><span>🫧 OXYGEN</span><strong id="oxygen">100</strong></div>
+        <div class="stat"><span>⭐ SCORE</span><strong id="score">0</strong></div>
+    </section>
+
+    <!-- MAIN GAME -->
+    <section class="game-layout">
+
+        <aside class="panel mission-panel">
+            <h2>MISSION CONTROL</h2>
+            <p class="muted">Your current mission</p>
+
+            <h3 id="missionName">Mission 1: Earth</h3>
+            <p id="missionDescription">Begin your space exploration journey.</p>
+
+            <div class="progress-info">
+                <span>MISSION PROGRESS</span>
+                <span id="progressText">0 / 10</span>
+            </div>
+
+            <div class="progress-track">
+                <div id="progressBar"></div>
+            </div>
+
+            <hr>
+
+            <h3>SHIP STATUS</h3>
+            <p id="shipStatus">Ready for launch.</p>
+
+            <button id="scanButton" class="primary">🔭 Start Mission</button>
+            <button id="travelButton" class="secondary">🚀 Travel to Planet</button>
+
+            <p id="message" class="message">Select a destination.</p>
+        </aside>
+
+        <section class="galaxy-area">
+            <div class="galaxy-heading">
+                <h2>GALAXY MAP</h2>
+                <span>SELECT YOUR DESTINATION</span>
+            </div>
+
+            <div class="galaxy" id="galaxy">
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
+                <div class="orbit orbit-three"></div>
+
+                <div class="sun">☀️</div>
+
+                <button class="planet" data-planet="0" style="--x:50%;--y:18%">🌍<small>Earth</small></button>
+                <button class="planet" data-planet="1" style="--x:78%;--y:32%">🔴<small>Mars</small></button>
+                <button class="planet" data-planet="2" style="--x:82%;--y:72%">🪐<small>Saturn</small></button>
+                <button class="planet" data-planet="3" style="--x:50%;--y:88%">🌕<small>Moon</small></button>
+                <button class="planet" data-planet="4" style="--x:18%;--y:72%">🧊<small>Neptune</small></button>
+                <button class="planet" data-planet="5" style="--x:18%;--y:32%">☄️<small>Asteroid Belt</small></button>
+                <button class="planet" data-planet="6" style="--x:35%;--y:12%">🟣<small>Kepler</small></button>
+                <button class="planet" data-planet="7" style="--x:68%;--y:12%">🌊<small>Europa</small></button>
+                <button class="planet" data-planet="8" style="--x:35%;--y:88%">🌌<small>Exoplanet</small></button>
+                <button class="planet" data-planet="9" style="--x:50%;--y:68%">👾<small>Final Zone</small></button>
+
+                <div id="spaceship" class="spaceship">🚀</div>
+            </div>
+
+            <div class="planet-details">
+                <h3 id="selectedName">Earth</h3>
+                <p id="selectedDescription">Your home planet.</p>
+                <p id="planetStatus">Status: Current location</p>
+            </div>
+        </section>
+    </section>
+
+    <!-- DISCOVERY LOG -->
+    <section class="panel discovery-panel">
+        <h2>🛰️ SPACE DISCOVERY LOG</h2>
+        <div id="discoveryLog">
+            <p>Welcome, Commander! Your journey starts here.</p>
+        </div>
+    </section>
+
+    <!-- SCIENCE QUIZ -->
+    <section class="panel puzzle-panel hidden" id="puzzlePanel">
+        <div class="challenge-heading">
+            <h2 id="puzzleTitle">MISSION CHALLENGE</h2>
+            <span id="difficultyLabel">ADVANCED</span>
+        </div>
+
+        <p id="questionCounter">Question 1 of 5</p>
+        <h3 id="puzzleQuestion"></h3>
+
+        <div id="puzzleOptions"></div>
+
+        <p id="puzzleFeedback" aria-live="polite"></p>
+        <button id="nextButton" class="primary hidden">Next Question →</button>
+    </section>
+
+    <!-- NASA MISSION ARCHITECTURE -->
+    <section class="panel nasa-panel">
+        <h2>🛰️ NASA MISSION ARCHITECTURE</h2>
+
+        <p class="nasa-intro">
+            Explore the four segments of a science mission,
+            based on NASA's Design and Develop Science Missions
+            educational resource.
+        </p>
+
+        <div class="segment-grid">
+
+            <div class="segment-card">
+                <h3>🚀 Launch Segment</h3>
+                <p>
+                    The launch vehicle and related services
+                    that carry the spacecraft into space.
+                </p>
+            </div>
+
+            <div class="segment-card">
+                <h3>🛰️ Space Segment</h3>
+                <p>
+                    Spacecraft, orbiters, landers, rovers
+                    and instruments used to collect data.
+                </p>
+            </div>
+
+            <div class="segment-card">
+                <h3>📡 Ground Segment</h3>
+                <p>
+                    Ground stations and mission control
+                    communicate with spacecraft and receive data.
+                </p>
+            </div>
+
+            <div class="segment-card">
+                <h3>🔬 User Segment</h3>
+                <p>
+                    Scientists and the public use collected
+                    mission data for research and education.
+                </p>
+            </div>
+
+        </div>
+
+        <h3 class="timeline-heading">MISSION DESIGN PROCESS</h3>
+
+        <div class="mission-timeline">
+            <div class="timeline-step">1. Identify Need & Goals</div>
+            <div class="timeline-step">2. Define Concept</div>
+            <div class="timeline-step">3. Define Requirements</div>
+            <div class="timeline-step">4. Design</div>
+            <div class="timeline-step">5. Build & Verify</div>
+            <div class="timeline-step">6. Implement</div>
+        </div>
+
+        <p class="nasa-source">
+            Learning Reference:
+            <a
+              href="https://www.nasa.gov/wp-content/uploads/2025/04/250323-design-and-develop-science-mission.pdf"
+              target="_blank"
+              rel="noopener noreferrer">
+              NASA – Design and Develop Science Missions
+            </a>
+        </p>
+    </section>
+
+</main>
+
+<footer>
+    SPACE EXPLORATION SIMULATOR | SPACEXPLORER
+</footer>
+
+</body>
+</html>

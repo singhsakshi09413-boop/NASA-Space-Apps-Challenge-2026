@@ -1,0 +1,496 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #070b1b;
+    color: white;
+    min-height: 100vh;
+}
+
+.topbar {
+    padding: 20px 5%;
+    background: #10162c;
+    border-bottom: 1px solid #373e68;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #b9a2ff;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.subtitle {
+    color: #8c9bc9;
+    letter-spacing: 3px;
+    font-size: 12px;
+}
+
+.dashboard {
+    width: 94%;
+    max-width: 1400px;
+    margin: 25px auto;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stat, .panel {
+    background: #111a33;
+    border: 1px solid #303c67;
+    border-radius: 14px;
+    padding: 18px;
+}
+
+.stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat span {
+    color: #9daed8;
+    font-size: 12px;
+}
+
+.stat strong {
+    color: #bba7ff;
+    font-size: 23px;
+}
+
+.game-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 20px;
+}
+
+.panel h2, .galaxy-heading h2 {
+    color: #c2adff;
+    font-size: 17px;
+    margin-bottom: 18px;
+}
+
+.mission-panel h3 {
+    margin: 16px 0 10px;
+}
+
+.mission-panel p {
+    color: #b2bfdc;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.muted {
+    color: #8794ba !important;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin: 22px 0 8px;
+    font-size: 11px;
+    color: #9daed8;
+}
+
+.progress-track {
+    height: 8px;
+    background: #293252;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#progressBar {
+    width: 0%;
+    height: 100%;
+    background: #9b7bff;
+    transition: width 0.4s;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #303c67;
+    margin: 20px 0;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.primary, .secondary {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    border: 0;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.primary {
+    background: #9474ff;
+    color: white;
+}
+
+.secondary {
+    background: #203c68;
+    color: white;
+}
+
+.primary:hover, .secondary:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.15);
+}
+
+button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.message {
+    margin-top: 15px;
+    font-size: 12px !important;
+    color: #c5b4ff !important;
+}
+
+.galaxy-area {
+    background: radial-gradient(
+        ellipse at center,
+        #192653,
+        #0b1128 65%,
+        #080d20
+    );
+    border: 1px solid #303c67;
+    border-radius: 14px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.galaxy-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.galaxy-heading span {
+    color: #8295c5;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.galaxy {
+    position: relative;
+    width: 100%;
+    height: 490px;
+    overflow: hidden;
+    border-radius: 12px;
+    background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(#a9baff 1px, transparent 1px);
+    background-size: 55px 55px, 90px 90px;
+    background-position: 0 0, 25px 30px;
+}
+
+.orbit {
+    position: absolute;
+    border: 1px solid #53649b55;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.orbit-one {
+    width: 34%;
+    height: 34%;
+}
+
+.orbit-two {
+    width: 65%;
+    height: 65%;
+}
+
+.orbit-three {
+    width: 92%;
+    height: 92%;
+}
+
+.sun {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 38px;
+    filter: drop-shadow(0 0 20px #ffbd4c);
+}
+
+.planet {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    transform: translate(-50%, -50%);
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    border: 1px solid #8d9bdb;
+    background: #25335c;
+    color: white;
+    font-size: 28px;
+    box-shadow: 0 0 18px #7488ff55;
+    z-index: 2;
+}
+
+.planet small {
+    position: absolute;
+    top: 68px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 10px;
+    color: #c9d4ff;
+}
+
+.planet:hover, .planet.selected {
+    box-shadow: 0 0 25px #aa8aff;
+    border: 2px solid #c1a7ff;
+}
+
+.planet.locked {
+    opacity: 0.35;
+    cursor: not-allowed;
+    filter: grayscale(0.8);
+}
+
+.spaceship {
+    position: absolute;
+    left: 50%;
+    top: 18%;
+    transform: translate(-50%, -50%);
+    font-size: 32px;
+    z-index: 5;
+    transition: left 1.5s ease, top 1.5s ease;
+    filter: drop-shadow(0 0 10px #a98cff);
+    pointer-events: none;
+}
+
+.planet-details {
+    background: #111b36;
+    border: 1px solid #303c67;
+    padding: 16px;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.planet-details h3 {
+    color: #c3adff;
+    margin-bottom: 8px;
+}
+
+.planet-details p {
+    color: #aebcdb;
+    font-size: 13px;
+    margin-top: 7px;
+}
+
+.discovery-panel, .puzzle-panel {
+    margin-top: 20px;
+}
+
+.discovery-panel p {
+    color: #aebcdb;
+    font-size: 13px;
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+.challenge-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.challenge-heading span {
+    color: #d4b4ff;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+#questionCounter {
+    color: #9caed7;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+#puzzleQuestion {
+    color: #fff;
+    font-size: 17px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.puzzle-panel button.option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: #202c50;
+    color: white;
+    border: 1px solid #465680;
+    border-radius: 8px;
+    padding: 13px;
+    margin-top: 10px;
+}
+
+.puzzle-panel button.option:hover:not(:disabled) {
+    background: #3b3671;
+}
+
+#puzzleFeedback {
+    color: #c1cce5;
+    line-height: 1.6;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* NASA MISSION ARCHITECTURE */
+
+.nasa-panel {
+    margin-top: 20px;
+}
+
+.nasa-intro {
+    color: #aebcdb;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.segment-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.segment-card {
+    background: #182443;
+    border: 1px solid #465680;
+    border-radius: 10px;
+    padding: 18px;
+    transition: 0.2s;
+}
+
+.segment-card:hover {
+    transform: translateY(-3px);
+    border-color: #b9a2ff;
+}
+
+.segment-card h3 {
+    color: #c2adff;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.segment-card p {
+    color: #b2bfdc;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.timeline-heading {
+    color: #c2adff;
+    margin: 25px 0 15px;
+}
+
+.mission-timeline {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.timeline-step {
+    background: #202c50;
+    border-left: 3px solid #9b7bff;
+    border-radius: 7px;
+    padding: 14px;
+    color: white;
+    font-size: 13px;
+}
+
+.nasa-source {
+    margin-top: 20px;
+    color: #9daed8;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.nasa-source a {
+    color: #c2adff;
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #7785ad;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 800px) {
+    .game-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .galaxy {
+        height: 390px;
+    }
+
+    .planet {
+        width: 48px;
+        height: 48px;
+        font-size: 22px;
+    }
+
+    .planet small {
+        top: 51px;
+        font-size: 8px;
+    }
+
+    .topbar {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .subtitle {
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 600px) {
+    .segment-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mission-timeline {
+        grid-template-columns: 1fr 1fr;
+    }
+}
